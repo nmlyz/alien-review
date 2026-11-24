@@ -6,13 +6,15 @@
 
 alien-review is a tiny program that writes one alien tourist's review of planet Earth to a file: the locals live in boxes, travel in boxes, and are buried in boxes — and the reviewer rates the boxes.
 
+The review is built in two beats — the observation, then the verdict — and the program checks the finished line before writing it: exactly 119 characters, one line, four mentions of boxes, and a SHA-256 fingerprint that must match. If any check fails, nothing is written.
+
 ## Run it
 
 ```sh
 python3 main.py
 ```
 
-It writes the line to `/output/entry.txt` (or `$MAKEFUN_OUTPUT_DIR/entry.txt`). No network access needed; the same text, byte for byte, on every run.
+It writes the line to `/output/entry.txt` (or `$MAKEFUN_OUTPUT_DIR/entry.txt`). No network access needed; the same text, byte for byte, on every run. The program reads the file back after writing and refuses to report success unless the bytes match the line exactly.
 
 ---
 
